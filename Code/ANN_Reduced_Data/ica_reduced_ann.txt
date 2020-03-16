@@ -1,0 +1,18 @@
+Parameters                                         
+Mean Fit Time                                      
+Std Dev Fit Time                                   
+Split 0 Score                                      
+Split 1 Score                                      
+Split 2 Score                                      
+Split 3 Score                                      
+Split 4 Score                                      
+{'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}  
+0.5633                                             
+0.0476                                             
+0.7587                                             
+0.7589                                             
+0.7589                                             
+0.7586                                             
+0.7586                                             
+Scoring ANN with parameters: {'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}	On Data: Census Dataset - ICA Dimension Reduction
+0.7598464491362764

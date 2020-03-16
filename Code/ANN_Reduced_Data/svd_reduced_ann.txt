@@ -1,0 +1,18 @@
+Parameters                                         
+Mean Fit Time                                      
+Std Dev Fit Time                                   
+Split 0 Score                                      
+Split 1 Score                                      
+Split 2 Score                                      
+Split 3 Score                                      
+Split 4 Score                                      
+{'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}  
+3.2304                                             
+1.0215                                             
+0.7738                                             
+0.7740                                             
+0.7589                                             
+0.7891                                             
+0.7911                                             
+Scoring ANN with parameters: {'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}	On Data: Census Dataset - SVD Dimension Reduction
+0.7946257197696737

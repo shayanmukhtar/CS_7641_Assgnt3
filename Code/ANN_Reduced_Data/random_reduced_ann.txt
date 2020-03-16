@@ -1,0 +1,18 @@
+Parameters                                         
+Mean Fit Time                                      
+Std Dev Fit Time                                   
+Split 0 Score                                      
+Split 1 Score                                      
+Split 2 Score                                      
+Split 3 Score                                      
+Split 4 Score                                      
+{'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}  
+5.2866                                             
+1.4472                                             
+0.7592                                             
+0.7589                                             
+0.7673                                             
+0.7617                                             
+0.7725                                             
+Scoring ANN with parameters: {'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}	On Data: Census Dataset - Random Projection Reduction
+0.7686756238003839
