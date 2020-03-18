@@ -1,0 +1,18 @@
+Parameters                                         
+Mean Fit Time                                      
+Std Dev Fit Time                                   
+Split 0 Score                                      
+Split 1 Score                                      
+Split 2 Score                                      
+Split 3 Score                                      
+Split 4 Score                                      
+{'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}  
+3.6793                                             
+0.5734                                             
+0.8234                                             
+0.8334                                             
+0.8385                                             
+0.8423                                             
+0.8439                                             
+Scoring ANN with parameters: {'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}	On Data: Census Dataset - K Means Clusters Added as Feature
+0.843147792706334

@@ -9,6 +9,8 @@ from Code import principle_component_analysis
 from Code import independant_component_analysis
 from Code import svd_projection
 from Code import random_projections
+from Code import k_means
+from Code import expectation_maximization
 import matplotlib.pyplot as plt
 from Code import evaluate_model_learning_complexity
 import sys
@@ -76,7 +78,7 @@ def neural_network_learning(x_data, y_data, params):
         fileOut.write(str(grid_searcher.best_estimator_.score(x_test, y_test)))
 
 
-def main():
+def dimensionality_reduction_ann():
     x_census_data, y_census_data = process_data.process_census_data('./../Datasets/Census_Income')
     train_size = 0.6
     random_state = 86
@@ -120,6 +122,38 @@ def main():
     # Run 4 neural nets - one for each instance of the reduced data
     for i in range(4):
         neural_network_learning(x_census_data_reduced[i], y_census_data, census_params[i])
+
+
+def clusters_added_ann():
+    x_census_data, y_census_data = process_data.process_census_data('./../Datasets/Census_Income')
+    # 2 ANN's here, one for each clustering algorithm
+    census_params_km = {'clusters': 8, "title": "Census Dataset - K Means Clusters Added as Feature",
+                        "path": "./ANN_Clustered_Data/", "file": "k_means_ann.txt",
+                        "cm_mat": "Census Dataset - K Means Clusters added Confusion Matrix"
+    }
+    census_params_em = {'clusters': 12, "title": "Census Dataset - EM Clusters Added as Feature",
+                        "path": "./ANN_Clustered_Data/", "file": "em_ann.txt",
+                        "cm_mat": "Census Dataset - EM Clusters added Confusion Matrix"
+    }
+    census_params_orig = {"title": "Census Dataset - Original",
+                          "path": "./ANN_Clustered_Data/", "file": "ann_orig.txt",
+                          "cm_mat": "Census Dataset - Original Confusion Matrix"
+                        }
+
+    km_clusters = k_means.return_k_means_clusters(census_params_km, x_census_data).reshape((len(x_census_data), 1))
+    em_clusters = k_means.return_k_means_clusters(census_params_em, x_census_data).reshape((len(x_census_data), 1))
+
+    x_census_data_km = np.hstack([x_census_data, km_clusters])
+    x_census_data_em = np.hstack([x_census_data, em_clusters])
+
+    neural_network_learning(x_census_data_km, y_census_data, census_params_km)
+    neural_network_learning(x_census_data_em, y_census_data, census_params_em)
+    neural_network_learning(x_census_data, y_census_data, census_params_orig)
+
+
+def main():
+    # dimensionality_reduction_ann()
+    clusters_added_ann()
 
 
 if __name__ == '__main__':

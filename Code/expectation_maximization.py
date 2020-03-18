@@ -11,6 +11,13 @@ import seaborn
 from yellowbrick.cluster import KElbowVisualizer
 
 
+def return_em_clusters(params, x_data):
+    cluster = params['clusters']
+    cluster_predictor = GaussianMixture(n_components=cluster)
+    cluster_labels = cluster_predictor.fit_predict(x_data)
+    return cluster_labels
+
+
 # code adapted from https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html
 def calculate_em_clusters(params, x_data, y_data):
     cluster = params['n_clusters'][0]

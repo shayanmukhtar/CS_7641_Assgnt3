@@ -1,0 +1,18 @@
+Parameters                                         
+Mean Fit Time                                      
+Std Dev Fit Time                                   
+Split 0 Score                                      
+Split 1 Score                                      
+Split 2 Score                                      
+Split 3 Score                                      
+Split 4 Score                                      
+{'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}  
+3.6095                                             
+0.3094                                             
+0.8222                                             
+0.8313                                             
+0.8375                                             
+0.8462                                             
+0.8109                                             
+Scoring ANN with parameters: {'hidden_layer_sizes': (32, 32), 'solver': 'sgd'}	On Data: Census Dataset - EM Clusters Added as Feature
+0.8424568138195777
