@@ -152,7 +152,7 @@ def clusters_added_ann():
 
 
 def main():
-    # dimensionality_reduction_ann()
+    dimensionality_reduction_ann()
     clusters_added_ann()
 
 
