@@ -52,6 +52,18 @@ def calculate_k_means_clusters(params, x_data, y_data):
     print("Homegenity Score:")
     print(str(sklearn.metrics.homogeneity_score(y_data, cluster_labels)))
 
+    try:
+        file_path = params['cluster_center_file']
+    except:
+        file_path = None
+
+    if file_path is not None:
+        with open(file_path, 'w+') as file_out:
+            i = 0
+            for cluster_center in cluster_predictor.cluster_centers_:
+                file_out.write(str(i) + "\t" + str(cluster_center) + "\n")
+                i += 1
+
 
 def run_k_means_elbow(params, x_data):
     model = KMeans()
@@ -77,14 +89,16 @@ def main():
         'n_clusters': [21],
         'elbow_graph': 'Stock Dataset Elbow Graph - K Means',
         'con_mat': 'Stock Dataset Confusion Matrix - K Means',
-        'fig_size': (20, 5)
+        'fig_size': (20, 5),
+        'cluster_center_file': "stock_k_means_centers.txt"
     }
 
     census_params = {
         'n_clusters': [8],
         'elbow_graph': 'Census Dataset Elbow Graph - K Means',
         'con_mat': 'Census Dataset Confusion Matrix - K Means',
-        'fig_size': (20, 5)
+        'fig_size': (20, 5),
+        'cluster_center_file': "census_k_means_centers.txt"
     }
 
     # Run the elbow technique on the stock dataset and then calculate the clusters using the ideal

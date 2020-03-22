@@ -113,8 +113,8 @@ def main():
         'ica_graph': "Census Data on Principle Components of ICA"
     }
 
-    # run_ica_reconstruction(stock_params, x_stock_data)
-    # run_ica_reconstruction(census_params, x_census_data)
+    run_ica_reconstruction(stock_params, x_stock_data)
+    run_ica_reconstruction(census_params, x_census_data)
     run_ica(stock_params, x_stock_data, y_stock_data)
     run_ica(census_params, x_census_data, y_census_data)
 

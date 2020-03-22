@@ -52,6 +52,18 @@ def calculate_em_clusters(params, x_data, y_data):
     print("Homegenity Score:")
     print(str(sklearn.metrics.homogeneity_score(y_data, cluster_labels)))
 
+    try:
+        file_path = params['cluster_center_file']
+    except:
+        file_path = None
+
+    if file_path is not None:
+        with open(file_path, 'w+') as file_out:
+            i = 0
+            for cluster_center in cluster_predictor.means_:
+                file_out.write(str(i) + "\t" + str(cluster_center) + "\n")
+                i += 1
+
 
 # adapted from https://jakevdp.github.io/PythonDataScienceHandbook/05.12-gaussian-mixtures.html
 def run_em_elbow(params, x_data, y_data):
@@ -83,14 +95,16 @@ def main():
         'n_clusters': [8],
         'elbow_graph': 'Stock Dataset Elbow Graph - EM',
         'con_mat': 'Stock Dataset Confusion Matrix - EM',
-        'fig_size': (20, 5)
+        'fig_size': (20, 5),
+        'cluster_center_file': "stock_em_cluster_centers.txt"
     }
 
     census_params = {
         'n_clusters': [12],
         'elbow_graph': 'Census Dataset Elbow Graph - EM',
         'con_mat': 'Census Dataset Confusion Matrix - EM',
-        'fig_size': (20, 5)
+        'fig_size': (20, 5),
+        'cluster_center_file': "census_em_cluster_centers.txt"
     }
 
     # Run the elbow technique on the stock dataset and then calculate the clusters using the ideal

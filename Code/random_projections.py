@@ -45,8 +45,9 @@ def create_random_guassian_projections(params, x_data):
         plt.title(params['projection_loss_graph'])
         plt.savefig(params['projection_loss_graph'] + '.png')
 
-    # TODO return the best three datasets
-    return x_data_news[0]
+    i = np.argmin(x_data_projection_losses)
+
+    return x_data_news[i]
 
 
 def main():
@@ -69,8 +70,8 @@ def main():
         'num_retry': 10
     }
 
-    # determine_min_dim(stock_params, x_stock_data)
-    # determine_min_dim(census_params, x_census_data)
+    determine_min_dim(stock_params, x_stock_data)
+    determine_min_dim(census_params, x_census_data)
     create_random_guassian_projections(stock_params, x_stock_data)
     create_random_guassian_projections(census_params, x_census_data)
 

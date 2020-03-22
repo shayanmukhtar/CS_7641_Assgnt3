@@ -28,7 +28,7 @@ def run_svd_reconstruction(params, x_data):
     plt.savefig(params['svd_graph_recon'] + ".png")
 
 
-def run_svd(params, x_data):
+def run_svd(params, x_data, y_data=None):
     clf = TruncatedSVD(params['n_components'])
     x_data_new = clf.fit_transform(x_data)
 
@@ -45,6 +45,20 @@ def run_svd(params, x_data):
                 fileOut.write("Eigenvalue: " + str(clf.explained_variance_[i]) +
                               "\t\tExplained Variance Percentage: " + str(clf.explained_variance_ratio_[i]) + "\n")
 
+    try:
+        graph_name = params['svd_graph']
+    except:
+        graph_name = None
+
+    if graph_name is not None and y_data is not None:
+        # graph the data against its principal components
+        plt.figure()
+        plt.scatter(x_data_new[:, 0], x_data_new[:, 1], c=y_data, cmap=plt.cm.get_cmap('RdYlBu', 10))
+        plt.xlabel("Component One")
+        plt.ylabel("Componenet Two")
+        plt.title(params['svd_graph'])
+        plt.savefig(params['svd_graph'] + ".png")
+
     return x_data_new
 
 
@@ -59,7 +73,8 @@ def main():
         'name': "Stock Data",
         'svd_graph_recon': "Stock Data Reconstruction Graph of SVD",
         'n_components': 100,
-        'filename': "stock_data_svd.txt"
+        'filename': "stock_data_svd.txt",
+        'svd_graph': "Stock Data - Data Plotted on Principal Axes using SVD"
     }
 
     census_params = {
@@ -67,13 +82,14 @@ def main():
         'name': "Census Data",
         'svd_graph_recon': "Census Data Reconstruction Graph of SVD",
         'n_components': 4,
-        'filename': "census_data_svd.txt"
+        'filename': "census_data_svd.txt",
+        'svd_graph': "Census Data - Data Plotted on Principal Axes using SVD"
     }
 
     run_svd_reconstruction(stock_params, x_stock_data)
     run_svd_reconstruction(census_params, x_census_data)
-    run_svd(stock_params, x_stock_data)
-    run_svd(census_params, x_census_data)
+    run_svd(stock_params, x_stock_data, y_stock_data)
+    run_svd(census_params, x_census_data, y_census_data)
 
 
 if __name__ == '__main__':

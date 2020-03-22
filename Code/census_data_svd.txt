@@ -15,7 +15,7 @@ Eigenvectors:
 
 
 Eigenvalues and explained variance percentage:
-Eigenvalue: 174.52338934103963		Explained Variance Percentage: 0.7553770770581832
-Eigenvalue: 19.848393034007668		Explained Variance Percentage: 0.085908376928393
-Eigenvalue: 13.308480233741175		Explained Variance Percentage: 0.05760214110559934
-Eigenvalue: 11.407087616671294		Explained Variance Percentage: 0.049372479724134784
+Eigenvalue: 174.52338934103992		Explained Variance Percentage: 0.7553770770581845
+Eigenvalue: 19.848393034007692		Explained Variance Percentage: 0.08590837692839311
+Eigenvalue: 13.308480233741204		Explained Variance Percentage: 0.05760214110559946
+Eigenvalue: 11.407087616671282		Explained Variance Percentage: 0.04937247972413473

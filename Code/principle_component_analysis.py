@@ -85,8 +85,8 @@ def main():
         'pca_graph': "Census Data - Data Plotted on Principal Axes"
     }
 
-    # run_pca_reconstruction(stock_params, x_stock_data)
-    # run_pca_reconstruction(census_params, x_census_data)
+    run_pca_reconstruction(stock_params, x_stock_data)
+    run_pca_reconstruction(census_params, x_census_data)
     run_pca(stock_params, x_stock_data, y_stock_data)
     run_pca(census_params, x_census_data, y_census_data)
 
