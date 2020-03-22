@@ -39,7 +39,7 @@ def run_ica_reconstruction(params, x_data):
     plt.savefig(params['ica_graph_recon'] + ".png")
 
 
-def run_ica(params, x_data):
+def run_ica(params, x_data, y_data=None):
     clf = FastICA(params['n_components'])
     x_data_new = clf.fit_transform(x_data)
 
@@ -70,6 +70,20 @@ def run_ica(params, x_data):
             for i in range(len(clf.mixing_.T)):
                 fileOut.write(str(clf.mixing_.T[i]) + "\n")
 
+    try:
+        graph_name = params['ica_graph']
+    except:
+        graph_name = None
+
+    if graph_name is not None and y_data is not None:
+        # graph the data against its principal components
+        plt.figure()
+        plt.scatter(x_data_new[:, 0], x_data_new[:, 1], c=y_data, cmap=plt.cm.get_cmap('RdYlBu', 10))
+        plt.xlabel("Component One")
+        plt.ylabel("Componenet Two")
+        plt.title(params['ica_graph'])
+        plt.savefig(params['ica_graph'] + ".png")
+
     return x_data_new
 
 
@@ -85,7 +99,8 @@ def main():
         'ica_graph_recon': "Stock Data Reconstruction Graph of ICA",
         'n_components': 100,
         'filename': "stock_data_ica.txt",
-        'ica_title': 'Stock Data Kurtosis of Calculated Components'
+        'ica_title': 'Stock Data Kurtosis of Calculated Components',
+        'ica_graph': "Stock Data on Principle Components of ICA"
     }
 
     census_params = {
@@ -94,13 +109,14 @@ def main():
         'ica_graph_recon': "Census Data Reconstruction Graph of ICA",
         'n_components': 4,
         'filename': "census_data_ica.txt",
-        'ica_title': 'Census Data Kurtosis of Calculated Components'
+        'ica_title': 'Census Data Kurtosis of Calculated Components',
+        'ica_graph': "Census Data on Principle Components of ICA"
     }
 
     # run_ica_reconstruction(stock_params, x_stock_data)
     # run_ica_reconstruction(census_params, x_census_data)
-    run_ica(stock_params, x_stock_data)
-    run_ica(census_params, x_census_data)
+    run_ica(stock_params, x_stock_data, y_stock_data)
+    run_ica(census_params, x_census_data, y_census_data)
 
 
 if __name__ == '__main__':
